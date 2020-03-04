@@ -111,6 +111,29 @@ In the above properties, \textbf{\textit{Number of Rules}} which specifies how m
 From the above association rules, we could see that we want class to be in consequent rather than in antecedent, because
 we need to predict the class of the flower and also when a new data comes into the system, we need to predict its species
 instead of having the class at beginning and attributes are placed in consequent because it is not to be predicted. \par
+\textbf{\underline{Experiments}} \par
+\textbf{\underline{Different Number of Bins}} \par
+By increasing number of bins, we could yield more information and thus we can calculate distance between data points 
+more precisely in k-means algorithm. On the other hand, having to many clusters which would yield less information and
+possibly it could make the algorithm ambiguous. 
 
+We tried to discretize the data with \textbf{\textit{6 bins}} and found that the amount of incorrectly clustered
+data points are more when compared with the clustering result with 3 bins, which makes the above line true. We then
+applied \textbf{\textit{addCluster}} filter on the 6 bins data and found the following association rules;
+\begin{enumerate}
+  \item [$*$] petallength='(-inf-1.983333]' ==$>$ cluster=cluster1 occurrence = 50    conf:(1)
+  \item [$*$] petalwidth='(-inf-0.5]' ==$>$ cluster=cluster1 occurrence = 49    conf:(1)
+  \item [$*$] sepallength='(5.5-6.1]' petallength='(3.95-4.933333]' ==$>$ cluster=cluster2 occurrence = 21    conf:(1)
+  \item [$*$] petallength='(3.95-4.933333]' petalwidth='(0.9-1.3]' ==$>$ cluster=cluster2 occurrence = 18    conf:(1)
+  \item [$*$] sepallength='(6.1-6.7]' petallength='(4.933333-5.916667]' ==$>$ cluster=cluster3 occurrence = 20    conf:(1)
+  \item [$*$] sepalwidth='(2.8-3.2]' petallength='(4.933333-5.916667]' ==$>$ cluster=cluster3 occurrence = 18    conf:(1)
+\end{enumerate}
+From the association rules above, we infer that cluster1 is characterized by only petal length and petal width, while
+cluster2 and cluster3 are characterized by mix of attribute values. This clustering is not good because there is 20.6667\% 
+of incorrectly clustered instances. This is because some of the values don't reach the minimum support and don't
+give rise to correct rules. From this we can conclude that instead of increasing the bins, we can perform discretize
+in an efficient way.
+\par
+\textbf{\underline{Different Number of Bins}} \par
 \end{document}
 
